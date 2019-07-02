@@ -8,18 +8,19 @@ class AnimeService {
     @Inject
     lateinit var anime_routes: AnimeRoutes
 
-    init {/*
-        anime_routes = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-            .create(AnimeRoutes::class.java)*/
+    init {
         DaggerApiComponent.create().inject(this)
-
     }
 
     fun getAnimeList():Single<SeasonalData>{
         return anime_routes.getSeasonalAnimes()
+    }
+
+    fun getCharacters(id:Int):Single<AnimeCharacterModel>{
+        return anime_routes.getAnimeCharacters(id)
+    }
+
+    fun getSimilar(id:Int):Single<AnimeSimilarModel>{
+        return anime_routes.getSimilarAnime(id)
     }
 }

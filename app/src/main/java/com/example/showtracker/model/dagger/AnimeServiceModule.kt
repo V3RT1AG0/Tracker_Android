@@ -27,4 +27,5 @@ class AnimeServiceModule{
     fun getAnimeService(): AnimeService {
         return AnimeService()
     }
+
 }
