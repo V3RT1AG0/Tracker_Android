@@ -1,17 +1,8 @@
 package com.example.showtracker.view;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import com.example.showtracker.model.Anime;
-import com.example.showtracker.viewmodel.AnimeListViewModel;
-
-import java.util.List;
 
 public class example extends AppCompatActivity {
     @Override

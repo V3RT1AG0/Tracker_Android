@@ -1,14 +1,11 @@
 package com.example.showtracker.view
 
-import android.app.Activity
 import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Button
 import com.example.showtracker.R
 import com.example.showtracker.model.Anime
 import com.example.showtracker.viewmodel.AnimeListViewModel
@@ -58,7 +55,11 @@ class AnimeListActivity : AppCompatActivity() {
         })
 
         viewModelProvider.loading.observe(this, Observer { loading ->
-            loading?.let { progressBar.visibility = if (it) View.VISIBLE else View.GONE }
+            loading?.let { progressBar.visibility = if (it) View.VISIBLE else View.GONE
+                if (it) {
+                    recyclerView.visibility = View.GONE
+                    error_view.visibility = View.GONE
+                }}
         })
 
         viewModelProvider.error.observe(this, Observer { errorOccoured ->

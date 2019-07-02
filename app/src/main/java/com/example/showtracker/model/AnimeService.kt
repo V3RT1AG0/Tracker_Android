@@ -1,9 +1,6 @@
 package com.example.showtracker.model
-import android.util.Log
+import com.example.showtracker.model.dagger.DaggerApiComponent
 import io.reactivex.Single
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 
 class AnimeService {

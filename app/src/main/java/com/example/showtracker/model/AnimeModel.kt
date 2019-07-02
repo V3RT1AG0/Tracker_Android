@@ -1,7 +1,6 @@
 package com.example.showtracker.model
 
 import com.google.gson.annotations.SerializedName
-import io.reactivex.Single
 
 data class Anime(
     @SerializedName("title")
@@ -9,7 +8,9 @@ data class Anime(
     @SerializedName("synopsis")
     val summary: String?,
     @SerializedName("image_url")
-    val image_url: String?
+    val image_url: String?,
+    @SerializedName("mal_id")
+    val id: Int?
 )
 
 data class SeasonalData(

@@ -1,5 +1,6 @@
 package com.example.showtracker.view
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -27,17 +28,24 @@ class AnimeListAdapter(var animeData: MutableList<Anime>) : RecyclerView.Adapter
 
     fun refresh(newAnimeData: List<Anime>) {
         // This doesn't work :https://stackoverflow.com/questions/37913252/kotlins-list-missing-add-remove-etc
-         animeData.clear()
-         animeData.addAll(newAnimeData)
-         notifyDataSetChanged()
+        animeData.clear()
+        animeData.addAll(newAnimeData)
+        notifyDataSetChanged()
     }
 
     class myViewHolder(val v: View) : RecyclerView.ViewHolder(v) {
+
+
         //Step 1: Create a viewHolder which will receive the desired view
         fun bind(anime: Anime) {
             v.anime_title.text = anime.title //setText() is called ie, the setter function for text
             v.anime_summary.text = anime.summary
             v.poster.loadImage(anime.image_url)  //An extension function like this is similar to creating a subcass and implementing our own method
+            v.setOnClickListener { v ->
+                val intent = Intent(v.context, AnimeMain::class.java)
+                intent.putExtra("id", anime.id)
+                v.context.startActivity(intent)
+            }
         }
     }
 

@@ -1,5 +1,7 @@
-package com.example.showtracker.model
+package com.example.showtracker.model.dagger
 
+import com.example.showtracker.model.AnimeRoutes
+import com.example.showtracker.model.AnimeService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

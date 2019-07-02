@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel
 import android.util.Log
 import com.example.showtracker.model.Anime
 import com.example.showtracker.model.AnimeService
-import com.example.showtracker.model.DaggerApiComponent
+import com.example.showtracker.model.dagger.DaggerApiComponent
 import com.example.showtracker.model.SeasonalData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -17,7 +17,7 @@ class AnimeListViewModel() : ViewModel() {
     val animes = MutableLiveData<List<Anime>>()
 
     @Inject
-    lateinit var animeServie:AnimeService
+    lateinit var animeServie: AnimeService
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
     val disposable = CompositeDisposable()

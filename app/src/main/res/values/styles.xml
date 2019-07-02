@@ -10,10 +10,17 @@
 
     <style name="title">
         <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+
     </style>
 
     <style name="description">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="cards">
+        <item name="android:background">@color/cardview_light_background</item>
+        <item name="android:elevation">0dp</item>
     </style>
 
 </resources>
