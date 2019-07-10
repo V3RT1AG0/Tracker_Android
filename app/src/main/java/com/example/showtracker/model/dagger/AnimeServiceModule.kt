@@ -24,8 +24,8 @@ class AnimeServiceModule{
     }
 
     @Provides
-    fun getAnimeService(): AnimeService {
-        return AnimeService()
+    fun getAnimeService(route:AnimeRoutes): AnimeService {
+        return AnimeService(route)
     }
 
 }

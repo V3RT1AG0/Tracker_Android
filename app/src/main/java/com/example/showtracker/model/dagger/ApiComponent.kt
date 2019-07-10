@@ -8,4 +8,5 @@ import dagger.Component
 interface ApiComponent{
     fun inject(service: AnimeService)
     fun give(viewModel:AnimeListViewModel)
+    fun getAnimeService():AnimeService
 }

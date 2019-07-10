@@ -11,6 +11,6 @@ interface AnimeRoutes {
     @GET("anime/{id}/recommendations")
     fun getSimilarAnime(@Path("id") id: Int): Single<AnimeSimilarModel>
 
-    @GET("anime/{id}/recommendations")
+    @GET("anime/{id}/characters_staff")
     fun getAnimeCharacters(@Path("id") id: Int): Single<AnimeCharacterModel>
 }

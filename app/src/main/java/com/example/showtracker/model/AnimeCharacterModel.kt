@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName
 
 data class Characters(
     @SerializedName("image_url")
-    val image_url: String?,
+    override val image_url: String?,
     @SerializedName("name")
-    val name: String?
-)
+    override val title: String?
+):RosterInterface
 
 data class AnimeCharacterModel(
     @SerializedName("characters")
-    val characterArray:Characters
+    val characterArray:List<Characters>
 )
