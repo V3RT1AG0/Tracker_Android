@@ -1,8 +1,9 @@
 package com.example.showtracker.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.showtracker.model.Anime
 import com.example.showtracker.model.AnimeService
 import com.example.showtracker.model.dagger.DaggerApiComponent

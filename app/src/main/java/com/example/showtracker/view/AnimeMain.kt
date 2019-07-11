@@ -1,16 +1,17 @@
 package com.example.showtracker.view
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+
+
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.showtracker.R
+import com.example.showtracker.model.Anime
 import com.example.showtracker.model.Characters
 import com.example.showtracker.model.Recommendations
-import com.example.showtracker.viewmodel.AnimeListViewModel
 import com.example.showtracker.viewmodel.AnimeMainViewModel
 import kotlinx.android.synthetic.main.anime_main_layout.*
 
@@ -23,7 +24,8 @@ class AnimeMain : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.anime_main_layout)
-        val id = intent.extras.getInt("id")
+//           val id = intent.extras.getInt("id")
+        val anime = intent.extras.getSerializable("anime") as Anime
 
         viewModelProvider = ViewModelProviders.of(this).get(AnimeMainViewModel::class.java)
 
@@ -41,10 +43,13 @@ class AnimeMain : AppCompatActivity() {
             adapter = similarAdapter
         }
 
+        viewModelProvider.getAnimeFromLocalDb()
+        followButton.setOnClickListener{v->
+            viewModelProvider.storeAnimeInLocalDb(anime)
+        }
+
         setObservers()
-        viewModelProvider.fetchDataFor(id)
-
-
+        viewModelProvider.fetchDataFor(anime.id)
     }
 
     fun setObservers(){
