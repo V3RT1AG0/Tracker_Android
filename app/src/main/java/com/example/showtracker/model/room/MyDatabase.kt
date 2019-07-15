@@ -12,24 +12,28 @@ import com.example.showtracker.model.Anime
 abstract class MyDatabase : RoomDatabase() {
     abstract fun getAnimeDAO(): AnimeDAO
 
-    companion object {
-        private var instance: MyDatabase? = null
-        fun getInstance(context: Context): MyDatabase? {
-            if (instance == null)
-                synchronized(MyDatabase::class.java) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        MyDatabase::class.java, "ShowTracker.db"
-                    )
-                        .build()
-                }
-            return instance
-        }
-
-        fun destroyInstance() {
-            instance = null
-        }
-
+    companion object{
+        val DATABASE_NAME = "ShowTracker.db"
     }
+
+//    companion object {
+//        private var instance: MyDatabase? = null
+//        fun getInstance(context: Context): MyDatabase? {
+//            if (instance == null)
+//                synchronized(MyDatabase::class.java) {
+//                    instance = Room.databaseBuilder(
+//                        context.applicationContext,
+//                        MyDatabase::class.java, "ShowTracker.db"
+//                    )
+//                        .build()
+//                }
+//            return instance
+//        }
+//
+//        fun destroyInstance() {
+//            instance = null
+//        }
+//
+//    }
 
 }

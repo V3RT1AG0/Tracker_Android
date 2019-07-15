@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.showtracker.model.*
 import com.example.showtracker.model.dagger.DaggerApiComponent
+import com.example.showtracker.model.dagger.RoomDBModule
 import com.example.showtracker.model.room.AnimeDAO
 import com.example.showtracker.model.room.MyDatabase
 import io.reactivex.CompletableObserver
@@ -19,19 +20,20 @@ import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
 
 //Note that we are extending AndroidViewModel here and not just ViewModel in order to get application context
-class AnimeMainViewModel(application: Application) : AndroidViewModel(application) {
+class AnimeMainViewModel(application: Application): AndroidViewModel(application) {
 
     var characters = MutableLiveData<List<Characters>>()
     var similar = MutableLiveData<List<Recommendations>>()
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()
     val disposable = CompositeDisposable()
-    var animeService = DaggerApiComponent.create().getAnimeService()
-    lateinit var dao: AnimeDAO
+    val daggerApiComponent = DaggerApiComponent.builder().roomDBModule(RoomDBModule(application)).build()
+    var animeService = daggerApiComponent.getAnimeService()
+    var dao: AnimeDAO = daggerApiComponent.getAnimeDAO()
 
 
     init {
-        MyDatabase.getInstance(application)?.let { dao = it.getAnimeDAO() }
+//        MyDatabase.getInstance(application)?.let { dao = it.getAnimeDAO() }
         loading.value = true
         error.value = false
     }
