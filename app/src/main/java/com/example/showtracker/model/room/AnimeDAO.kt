@@ -21,5 +21,5 @@ interface AnimeDAO {
     fun update(anime: Anime)
 
     @Delete
-    fun delete(anime: Anime)
+    fun delete(anime: Anime):Completable
 }

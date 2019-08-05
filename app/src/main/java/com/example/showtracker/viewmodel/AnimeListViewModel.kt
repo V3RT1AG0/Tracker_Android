@@ -19,6 +19,7 @@ import javax.inject.Inject
 
 class AnimeListViewModel(application: Application) : AndroidViewModel(application) {
     val animes = MutableLiveData<List<Anime>>()
+    //TODO remove rommDB module form here and check for FactoryMethod
     var animeServie: AnimeService = DaggerApiComponent.builder().roomDBModule(RoomDBModule(application)).build().getAnimeService()
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<Boolean>()

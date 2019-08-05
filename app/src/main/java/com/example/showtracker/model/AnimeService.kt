@@ -18,4 +18,8 @@ class AnimeService @Inject constructor(val anime_routes: AnimeRoutes) {
     fun getSimilar(id: Int): Single<AnimeSimilarModel> {
         return anime_routes.getSimilarAnime(id)
     }
+
+    fun getAnimeDetails(id: Int): Single<AnimeDetailModel> {
+        return anime_routes.getAnimeDetails(id)
+    }
 }
